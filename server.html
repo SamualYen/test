@@ -7,10 +7,22 @@
     <script type="text/javascript">
         window.addEventListener("message", recieveMessage, false);
         function recieveMessage(event){
-            if (event.data !== "jpl")
-            alert("Message Get Success");
-            else if (event.data !== "jps")
-            alert("big message");
+            if (event.data == "jps")
+            var video = document.createElement("video");
+            video.setAttribute("autoplay", "true");
+            video.setAttribute("src", "https://drv.tw/~leoniath@gmail.com/gd/aqua_jps.mp4");
+            video.requestFullscreen();
+            else if (event.data == "jpl")
+            var video = document.createElement("video");
+            video.setAttribute("autoplay", "true");
+            video.setAttribute("src", "https://drv.tw/~leoniath@gmail.com/gd/aqua_jpl.mp4");
+            video.requestFullscreen();
+        }
+    
+    
+        video.addEventListener("ended", videoStoppedPlaying);
+        function videoStoppedPlaying(event){
+            document.getElementById("video").remove();
         }
     </script>
     <style type="text/css">
@@ -18,9 +30,8 @@
     </style>
   </head>
   <body>
-      <div>
-          <video />
-      </div>
+      
+
       
   </body>
 </html>
