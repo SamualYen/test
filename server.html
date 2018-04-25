@@ -5,18 +5,30 @@
     <title>simple http request</title>
     <script src="/libs/qimessaging/1.0/qimessaging.js"></script>
     <script type="text/javascript">
+        
         window.addEventListener("message", recieveMessage, false);
+        
         function recieveMessage(event){
-            if (event.data == "jps")
-            var video = document.createElement("video");
-            video.setAttribute("autoplay", "true");
-            video.setAttribute("src", "https://drv.tw/~leoniath@gmail.com/gd/aqua_jps.mp4");
-            video.requestFullscreen();
-            else if (event.data == "jpl")
-            var video = document.createElement("video");
-            video.setAttribute("autoplay", "true");
-            video.setAttribute("src", "https://drv.tw/~leoniath@gmail.com/gd/aqua_jpl.mp4");
-            video.requestFullscreen();
+            if (event.data == "jps"){
+            var x = document.getElementById("video");
+                x.setAttribute("autoplay", "true");
+                x.setAttribute("src", "https://drv.tw/~leoniath@gmail.com/gd/aqua_jps.mp4");
+                x.requestFullscreen();
+                video.addEventListener("ended", videoStoppedPlaying);
+                function videoStoppedPlaying(event){
+                    document.getElementById("video").remove();
+                }
+            }
+                else if (event.data == "jpl"){
+            var x = document.createElement("video");
+                x.setAttribute("autoplay", "true");
+                x.setAttribute("src", "https://drv.tw/~leoniath@gmail.com/gd/aqua_jpl.mp4");
+                x.requestFullscreen();
+                video.addEventListener("ended", videoStoppedPlaying);
+                function videoStoppedPlaying(event){
+                    document.getElementById("video").remove();
+                }
+            }
         }
     
     
@@ -31,7 +43,7 @@
   </head>
   <body>
       
-
+<video id = "video"></video>
       
   </body>
 </html>
